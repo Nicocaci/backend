@@ -1,0 +1,29 @@
+<h1>Stock de vinos tiempo real</h1>
+
+
+<div id="contenedorProductos"></div>
+
+<h2>Formulario para agregar productos en tiempo real</h2>
+
+<form id="agregarProducto">
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" required><br>
+
+    <label for="title">Name:</label>
+    <input type="text" id="title" name="title" required><br>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" required><br>
+    
+    <label for="description">Description:</label>   
+    <textarea id="description" name="description    " required></textarea><br>
+
+
+    <button type="submit">Submit</button>
+
+
+</form>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+<script src="/js/main.js"></script>
