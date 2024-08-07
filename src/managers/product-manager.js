@@ -19,16 +19,16 @@ class ProductManager {
         }
     }
 
-    async addProduct({ title, description, price, img, code, stock }) {
+    async addProduct({ title, description, price, id, stock }) {
 
-        if (!title || !description || !price || !img || !code || !stock) {
+        if (!title || !description || !price ||!id || !stock) {
             console.log("Todos los campos son obligatorios");
             return;
         }
 
         //2) Validacion: 
 
-        if (this.products.some(item => item.code === code)) {
+        if (this.products.some(item => item.id === id)) {
             console.log("El codigo debe ser unico.. o todos moriremos");
             return;
         }
@@ -39,8 +39,6 @@ class ProductManager {
             title,
             description,
             price,
-            img,
-            code,
             stock
         };
 

@@ -5,6 +5,7 @@ console.log("hola mundo")
 const socket = io();
 const form = document.querySelector('form');
 
+
 // Escuchamos el evento prodcutos  y recibimos array con datos
 
 socket.on("productos",(data) =>{
@@ -49,11 +50,35 @@ const addProduct = (product) => {
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     const formData = new FormData(form);
-    const productos = Object.fromEntries(formData);
-    productos.price = parseFloat(productos.price);
-    productos.stock = parseInt(productos.stock, 10);
-    console.log('Form data:', productos);
-    addProduct(productos);
-    //form.reset(); // Opcional: resetear el formulario después de enviar
+    const product = Object.fromEntries(formData);
+    product.price = parseFloat(product.price);
+    product.stock = parseInt(product.stock, 10);
+    //console.log('Form data:', product);
+    addProduct(product);
+    form.reset(); // Opcional: resetear el formulario después de enviar
 });
+
+const agregarProduct = async (products) =>{
+    try {
+        const response = await fetch('http://localhost:8080/api/products', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(products)
+        });
+
+        if (response.ok) {
+            alert('product added successfully');
+            socket.emit('addProduct', products);
+        } else {
+            alert('Error adding product');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+
+
 
