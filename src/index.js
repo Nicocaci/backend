@@ -8,6 +8,7 @@ const { Server } = require('socket.io');
 const socket = require('socket.io');
 const ProductManager = require("./managers/product-manager.js");
 const manager = new ProductManager("./src/data/productos.json"); 
+const path = require('path');
 
 
 
@@ -24,6 +25,8 @@ app.set("views", "./src/views");
 // Middleware
 app.use(express.json());
 app.use(express.static("./src/public")); 
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
 // Rutas
 app.use('/api/products', productRouter);
 app.use('/api/carts', cartRouter);
@@ -54,7 +57,7 @@ io.on("connection", async (socket) =>{
         }
     
         // Validar que todos los campos requeridos están presentes y no están vacíos
-        const { title, description, price, stock} = product;
+        const { title, description, price,thumbnail, stock} = product;
     
         if (!title || typeof title !== 'string' || title.trim() === '') {
             console.error('Product title is required and must be a non-empty string');
@@ -74,6 +77,10 @@ io.on("connection", async (socket) =>{
     
         if (isNaN(stock) || stock < 0) {
             console.error('Product stock is required and must be a non-negative integer');
+            return;
+        }
+        if (typeof thumbnail !== 'string') {
+            console.error('Product thumbnail must be a string');
             return;
         }
     

@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: grey;
+    background-color: black;
+}
+
+header{
+    border-bottom: 5px solid white;
+    padding-bottom: 10%;
+    background-color: grey;
+}
+
+h1{
+    color: white;
+    text-align: center;
+
+}
+
+.card-contenedor{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    margin-top: 10%;
+    justify-content: center;
+    margin-left: 15%;
+}
+
+.card{
+    border: 5px solid white;
+    height: 100%;
+    width: 40%;
+    color: white;
+    font-size: 20px;
+
+    
+}
+
+.detalle-card{
+    padding: 5%;
+    text-align: center;
+
+}
+
+
+.card-img{
+    width: 100%;
+    height: 250px;
+}

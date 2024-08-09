@@ -4,7 +4,7 @@
     "title": "Andillian Malbec",
     "description": "San Patricio del Chañar - Neuquen",
     "price": 7500,
-    "img": "sin imagen",
+    "thumbnail": "https://cepadevinos.com/wp-content/uploads/2021/08/Untitled_-_2020-01-15T171854.356_1024x1024a.png",
     "code": "U78FS9",
     "stock": 20
   },
@@ -13,8 +13,16 @@
     "title": "Staphyle Vástago GEA Malbec Rosé",
     "description": "Lujan de Cuyo, Mendoza",
     "price": 7000,
-    "img": "sin imagen",
+    "thumbnail": "https://www.staphyle.com/uploads/wines/1674235957_b_vastagodegea_rose.png",
     "code": "YU56AS",
     "stock": 22
+  },
+  {
+    "id": 7,
+    "title": "Primogénito Merlot",
+    "description": "GODD",
+    "thumbnail": "https://www.espaciovino.com.ar/media/default/0001/57/thumb_56016_default_medium.jpeg",
+    "price": 20000,
+    "stock": 10
   }
 ]
