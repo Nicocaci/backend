@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Obtener todos los productos o limitados por query param
 router.get("/", async (req, res) => {
-    const arrayProductos = await manager.getProducts();
+    const arrayProductos = await manager.get();
     res.send(arrayProductos);
 })
 
