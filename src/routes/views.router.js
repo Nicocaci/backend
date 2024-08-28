@@ -1,14 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const ProductManager = require ("../managers/product-manager.js")
-const manager = new ProductManager ("./src/data/productos.json")
+const ProductManager = require ("../managers/product-manager.js");
+const VinoModel = require('../model/vinos.model.js');
+// const manager = new ProductManager ("./src/data/productos.json")
 
 
 
 router.get("/", async(req,res) =>{
-    const productos = await manager.getProducts();
+    const vinos = await VinoModel.find().lean();
+    // const nuevoArray = vinos.map(vino => {
+    //     return{
+    //         id: vino._id,
+    //         title: vino.title,
+    //         description: vino.description,
+    //         price: vino.price,
+    //         path: vino.path
 
-    res.render("index", {productos});
+    //     }
+    // })
+
+    res.render("index", {vinos});
 })
 
 

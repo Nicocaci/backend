@@ -19,9 +19,9 @@ class ProductManager {
         }
     }
 
-    async addProduct({ title, description, price,thumbnail, id, stock }) {
+    async addProduct({ title, description, price, stock }) {
 
-        if (!title || !description || !price ||!id || !thumbnail|| !stock) {
+        if (!title || !description || !price || !stock) {
             console.log("Todos los campos son obligatorios");
             return;
         }
