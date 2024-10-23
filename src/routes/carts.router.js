@@ -36,5 +36,19 @@ router.post("/:cid/product/:pid", async (req, res) => {
     }
 })
 
+
+router.delete("/:cid/product/:id", async (req,res) => {
+    const carritoId = req.params.cid;
+    const productoId = req.params.pid;
+    
+    try {
+        const eliminarCarrito = await cartManager.vaciarCarrito(carritoId,productoId);
+        res.status(201).json({
+            message: "Carrito Eliminado correctamente"
+        })
+    } catch (error) {
+        res.status(500).send("Error al eliminar carrito")
+    }
+})
 module.exports = router;
 

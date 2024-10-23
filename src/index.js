@@ -9,7 +9,12 @@ const socket = require('socket.io');
 const ProductManager = require("./managers/db/product-managers-db.js");
 const manager = new ProductManager(); 
 const path = require('path');
-const dataBase = require('./database.js');
+require("./database.js"); 
+const userRouter = require('./routes/user.router.js');
+const cookieParser = require('cookie-parser');
+const initializePassport = require('./config/passport.config.js');
+const passport = require('passport')
+
 
 
 
@@ -26,12 +31,17 @@ app.set("views", "./src/views");
 
 // Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./src/public")); 
 app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+initializePassport(); 
+app.use(passport.initialize()); 
 
 // Rutas
 app.use('/api/products', productRouter);
 app.use('/api/carts', cartRouter);
+app.use('/api/sessions', userRouter);
 app.use('/', viewsRouter);
 
 const httpServer = app.listen(PUERTO, () => {

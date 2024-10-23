@@ -14,6 +14,8 @@ class CartManager {
         }
     }
 
+    // METODO QUE DEVUELVE CARRITO SEGUN ID
+    
     async getCarritoById(id) {
         try {
             const carrito = await CartModel.findById(id)
@@ -26,7 +28,7 @@ class CartManager {
             throw error;
         }
     }
-
+    // Metodo que  agrega producto nuevo al carrito 
     async agregarProductoAlCarrito(carritoId, productoId, quantity = 1) {
         try {
             const carrito = await this.getCarritoById(carritoId);
@@ -50,6 +52,25 @@ class CartManager {
         } 
     }
 
+//  METODO PARA BORRAR PRODUCTO DEL CARRITO
+
+    // async borrarProductoDelCarrito (carritoId,productoId)
+// METODO PARA ACTUALIZAR PRODUCTO DEL CARRITO
+
+
+
+
+// METODO PARA VACIAR CARRITO
+    async vaciarCarrito (carritoId) {
+        try {
+            const eliminar = await CartModel.findByIdAndUpdate(carritoId,{$set:{productos:[]}},{new:true});
+            console.log("Carrito vaciado")
+        } catch (error) {
+            console.log("Error al vaciar el carrito");
+            throw error;
+            
+        }
+    }
 }
 
 module.exports = CartManager; 

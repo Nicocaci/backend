@@ -1,43 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Home</title>
-    <link rel="stylesheet" href="../public/css/index.css">
-</head>
-
-<body>
-    <header>
-        <h1 class="titulo-header">LaJuntaVino</h1>
-    </header>
-    <main>
-        <div>
-            <h1 class="titulo-index">Stock de vinos 2024</h1>
-        </div>
-        <div>
-            <div class="card-contenedor">
-                {{#each vinos}}
-                <div class="card">
-                    <img class= "card-img"src={{this.thumbnail}} alt={{this.title}}>
-                    <div class="detalle-card">
-                    <p>{{this.title}}</p>
-                    <p>{{this.description}}</p>
-                    <p>{{this.price}}</p>
-                    <button>anashe</button>
-                    </div>
-                </div>
-                {{/each}}
-            </div>
-        </div>
-    </main>
-    <footer>
-
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
-    <script src="/js/main.js"></script>
-</body>
-
-</html>
-
+<h2>Bienvenido</h2>
+<form action="/api/sessions/logout" method="POST">
+    <button type="submit"> Logout </button>
+</form>

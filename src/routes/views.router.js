@@ -33,6 +33,13 @@ router.get('/realtimeproducts', async (req, res) => {
     }
 })
 
+router.get("/registro", (req,res) =>{
+    res.render("registro")
+})
+
+router.get("/login", (req, res) => {
+    res.render("login"); 
+})
 
 
 module.exports = router
