@@ -1,9 +1,6 @@
 // CONECTAMOS CON LA BASE DE DATOS
 
-const mongoose = require('mongoose');
-
-
-
+import mongoose from "mongoose";
 
 mongoose.connect("mongodb+srv://nicocaci:nicocaci@coderhouse.ihpiu.mongodb.net/lajuntavino?retryWrites=true&w=majority&appName=coderhouse")
     

@@ -1,0 +1,29 @@
+import mongoose from "mongoose";
+
+const ticketSchema = new mongoose.Schema({
+    code: {
+        type: String,
+        unique: true,
+        required: true,
+        default: function() {
+            return`TICKET-${Math.floor(Math.random() * 1000)}`
+        }
+    },
+    purchase_datatime: {
+        type: Date,
+        default: Date.now,
+        required: true
+    },
+    amount: {
+        type: Number,
+        required: true
+    },
+    purchaser: {
+        type: String,
+        required: true
+    }
+})
+
+const TicketMoedel = mongoose.model("tickets", ticketSchema);
+
+export default TicketMoedel;

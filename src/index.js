@@ -1,28 +1,24 @@
-const express = require('express');
-const productRouter = require('./routes/products.router.js');
-const cartRouter = require('./routes/carts.router.js');
-const viewsRouter = require('./routes/views.router.js');
+import express from 'express';
+import productRouter from './routes/products.router.js';
+import cartRouter from './routes/carts.router.js';
+import viewsRouter from './routes/views.router.js';
+import { Server } from 'socket.io';
+import ProductManager from './managers/db/product-managers-db.js';
+import path from 'path';
+import { fileURLToPath } from 'url'; // Necesario para manejar __dirname en ES Modules
+import './database.js'; 
+import userRouter from './routes/user.router.js';
+import cookieParser from 'cookie-parser';
+import initializePassport from './config/passport.config.js';
+import passport from 'passport';
+
 const app = express();
 const PUERTO = 8080;
-const { Server } = require('socket.io');
-const socket = require('socket.io');
-const ProductManager = require("./managers/db/product-managers-db.js");
-const manager = new ProductManager(); 
-const path = require('path');
-require("./database.js"); 
-const userRouter = require('./routes/user.router.js');
-const cookieParser = require('cookie-parser');
-const initializePassport = require('./config/passport.config.js');
-const passport = require('passport')
-
-
-
+const manager = new ProductManager();
 
 
 // Importamos express Handle bars
-
-const exphbs = require("express-handlebars")
-
+import { engine as handlebarsEngine } from "express-handlebars";
 // Configuramos express-handlebars
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
