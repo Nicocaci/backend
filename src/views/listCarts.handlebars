@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista carritos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+        .productos-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .card{height: 300px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content between align-items-center my-4">
+            <h1>Mi carrito</h1>
+            <h2 id="precioTotal"></h2>
+        </div>
+        <input hidden id="idCarrito" value="{{cartId}}"></input>
+        <div id="carritos" class="productos-container"></div>
+        <div id="volverRutas" class="my-4"></div>
+        <div id="generarTicket" class="my-4"></div>
+    </div>
+
+    <script>
+        const cartId = document.getElementById("cartId").value;
+
+        async function cargarCarrito(cartId) {
+            try {
+               //Hacemos una solicitud GET a la ruta "/api/carts/:cid", donde cId es el cartId 
+                const response = await fetch(`/api/carts/${cartId}`);
+
+                if(!response.ok){
+                    throw new Error("Error al obtener el carrito");
+                }
+                //Parseamos la respuesta a JSON
+                const carrito = await response.json();            
+                
+                //Seleccionamos el contenedor donde quermos mostrar los productos.
+                
+
+            }   
+        }
+
+
+
+
+    </script>
+</body>
+</html>

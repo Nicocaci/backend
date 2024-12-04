@@ -62,7 +62,7 @@ router.get("/:cid/purchase", async (req, res) =>{
             }
         }
 
-        const usuarioDelCarrito = await UsuarioModel.findeOne({cart: carritoId});
+        const usuarioDelCarrito = await UserModel.findeOne({cart: carritoId});
 
         const ticket = new TicketModel({
             purchase_datatime: new Date(),

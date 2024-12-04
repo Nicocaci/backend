@@ -1,0 +1,14 @@
+<div>
+    <h1>Menú principal</h1>
+    <ul style="list-style-type: none; padding: left 0%">
+        <li><a href="/products">Ver Productos</a></li>
+        <li><a href="/listCarts">Ver Carritos</a></li>
+        <li><a href="/realtimeProducts">Agregar Productos</a></li>
+        <li><a href="/deleteProducts">Eliminar Productos</a></li>
+    </ul>
+</div>
+<h2>Bienvenido, {{user.first_name}} !! {{user.last_name}}</h2>
+<h3>Rol: {{user.role}}</h3>
+<form action="/api/sessions/logout" method="POST">
+<button type="submit"> Logout </button>
+</form>
