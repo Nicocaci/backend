@@ -21,6 +21,7 @@ class UserController {
         res.cookie("coderCookieToken", token, {maxAge: 3600000, httpOnly: true});
         res.redirect("/api/sessions/current");
     } catch (error) {
+        console.error("cagamos", error);
         res.status(500).send("Error del servidor");
     }
 }

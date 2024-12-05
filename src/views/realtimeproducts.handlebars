@@ -1,35 +1,23 @@
-<h1>Stock de vinos tiempo real</h1>
-
+<h1> Real Time Products </h1>
 
 <div id="contenedorProductos"></div>
 
-<h2>Formulario para agregar productos en tiempo real</h2>
+<h2> Formulario para agregar Productos </h2>
 
-<form id="agregarProducto">
-    
-    <label for="title">Name:</label>
-    <input type="text" id="title" name="title" required><br>
-    
-    <label for="description">Description:</label>   
-    <textarea id="description" name="description" required></textarea><br>
-
-    <label for="thumbnail">Img Url:</label>   
-    <textarea id="thumbnail" name="thumbnail" required></textarea><br>
-    
-    <label for="price">Price:</label>
-    <input type="number" id="price" name="price" required><br>
-    
-    <label for="id">ID:</label>
-    <input type="text" id="id" name="id" required><br>
-
-    <label for="stock">Stock:</label>
-    <input type="number" id="stock" name="stock" required><br>
-
-    <button type="submit">Submit</button>
-
-
+<form>
+    <input type="text" id="title" placeholder="Titulo">
+    <input type="text" id="description" placeholder="Descripcion">
+    <input type="number" id="price" placeholder="Precio">
+    <input type="text" id="img" value="Sin Imagen">
+    <input type="text" id="code" placeholder="Codigo">
+    <input type="number" id="stock" placeholder="Stock">
+    <input type="text" id="category" placeholder="Categoria">
+    <select id="status">
+        <option value="true"> Activo </option>
+        <option value="false"> Inactivo </option>
+    </select>
+    <button type="button" id="btnEnviar"> Enviar </button>
 </form>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
-<script src="/js/main.js"></script>
+<script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+<script src="js/index.js"></script>

@@ -40,14 +40,73 @@
                 const carrito = await response.json();            
                 
                 //Seleccionamos el contenedor donde quermos mostrar los productos.
-                
+                const contenedorCarritos = document.getElementById('carritos');
+                contenedorCarritos.innerHTML = ' '; // Limpiamos el contenido anterior..
 
+                //Calculamos el total del precio 
+                let precioTotal = 0;
+
+
+                //Creamos una tarjeta por cada productoi en el carrito
+                carrito.forEach(iteam => {
+                    const itemTotal = item.product.price * item.quantity;
+                    precioTotal += itemTotal;
+
+                    const productoDiv = document.createElement('div');
+                    productoDiv.classList.add('card', 'my-3');
+                    productoDiv.innerHTML = `
+                            <div class="card-header">
+                                Producto: ${item.product.titlte}
+                            </div>
+                            <div class="card-body">
+                                <p> Precio Unitario: $${item.product.price}</p>
+                                <p> Cantidad: ${item.product.quantity}</p>
+                                <p> Total: $${itemTotal}</p>
+                                <button class="btn btn-danger btn-sm" onClick="eliminarDelCarrito('${cartId}', '${item.product._id}')">Eliminar</button>
+                            </div>
+                    `;
+                    //Añadimos la trarjeta del producto al contenedor
+                    contenedorCarritos.appendChild('productoDiv');
+                });
+                //Mostramos el precio total al lado del titulo Mi Carrito
+                document.getElementById('precioTotal').innerText = `Precio total: $${precioTotal}`;
+
+                //Añadimos el boton para volver a las rutas y el enlace para ver productos
+                const volverRutasDiv = document.getElementById('volverRutas');
+                volverRutasDiv.innerHTML = `
+                    <button class="btn btn-primary" onClick="window.location.href='/products'">Seccion de Productos</button>
+                `;
+
+                generarTicketDiv = document.getElementById('generarTicket');
+                generarTicket.innerHTML = `
+                <button class="btn btn-primary" onClick="window.location.href='/api/carts/${cartId}/purchase'">Generar Ticket</button>
+                `;
+            } catch (error) {
+                console.error('Error interno del servidor', error);
             }   
         }
 
+        async function eliminarDelCarrito(cartId, productId) {
+            try {
+               const response = await fetch(`/api/carts/${cartId}/product/${prodcut.id}`, {
+                method: 'DELETE'
+               });
+               const result = await response.json();
 
+               if(response.ok){
+                alert('Producto eliminado del carrito exitosamente');
+                cargarCarrito(cartId);
+               } else {
+                alert('Error al eliminar producto del carrito');
+                console.error(result);
+               }
+            } catch (error) {
+                console.error('Error al eliminar producto del carrito');
+                alert('Error al eliminar producto del carrito');
+            }
+        }
 
-
+        cargarCarrito(cartId);
     </script>
 </body>
 </html>
