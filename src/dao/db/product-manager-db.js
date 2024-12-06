@@ -66,7 +66,7 @@ class ProductManager {
                 };
             });
             const totalProducts = await ProductModel.countDocuments(queryOptions);
-            const totalPages = matg.ceil(totalProducts / limit);
+            const totalPages = Math.ceil(totalProducts / limit);
             const hasPrevPage = page > 1;
             const hasNextPage = page < totalPages;
 

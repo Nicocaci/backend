@@ -15,7 +15,7 @@ router.get("/login", (req,res) => {
     if(req.session?.login) {
         return res.redirect("/products");
     }
-    res.render("register");
+    res.render("login");
 });
 
 //Ruta para el formulario de registro:
@@ -73,7 +73,7 @@ router.get("/realtimeproducts", passport.authenticate("jwt", {session:false}), s
 
 //Ruta para eliminar producto
 
-router.get("deleteProduct", (req,res) =>{
+router.get("/deleteProduct", (req,res) =>{
     res.render("deleteProducts");
 });
 
@@ -123,7 +123,7 @@ router.get("/createCart", (req,res) =>{
 
 
 //Ruta para eliminar carrito 
-router.get("deleteCart", (req,res) =>{
+router.get("/deleteCart", (req,res) =>{
     res.render("deleteCart");
 });
 
