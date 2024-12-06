@@ -10,7 +10,7 @@ class CartRepository {
     }
 
     async addProductToCart(cartId,productId,quantity) {
-        return await CartDao.addProuductToCart(cartId,productId,quantity);
+        return await CartDao.addProductToCart(cartId,productId,quantity);
     }
     
     async getAllCarts(){

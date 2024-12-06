@@ -12,12 +12,12 @@ class CartDao {
         return await CartModel.findById(cartId).populate("products.product")
     }
 
-    async addProuductToCart(cartId,productId,quantity) {
+    async addProductToCart(cartId,productId,quantity) {
         const cart = await CartModel.findById(cartId);
         if(!cart) {
             throw new Error("Carrito no encontrado");
         }
-        const product = new ProductModel.findById(productId);
+        const product = ProductModel.findById(productId);
         if(!product){
             throw new Error("Producto no encontrado")
         }

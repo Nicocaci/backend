@@ -26,7 +26,7 @@
     </div>
 
     <script>
-        const cartId = document.getElementById("cartId").value;
+        const cartId = document.getElementById('idCarrito').value;
 
         async function cargarCarrito(cartId) {
             try {
@@ -48,7 +48,7 @@
 
 
                 //Creamos una tarjeta por cada productoi en el carrito
-                carrito.forEach(iteam => {
+                carrito.forEach(item => {
                     const itemTotal = item.product.price * item.quantity;
                     precioTotal += itemTotal;
 
@@ -66,7 +66,7 @@
                             </div>
                     `;
                     //Añadimos la trarjeta del producto al contenedor
-                    contenedorCarritos.appendChild('productoDiv');
+                    contenedorCarritos.appendChild(productoDiv);
                 });
                 //Mostramos el precio total al lado del titulo Mi Carrito
                 document.getElementById('precioTotal').innerText = `Precio total: $${precioTotal}`;
@@ -88,7 +88,7 @@
 
         async function eliminarDelCarrito(cartId, productId) {
             try {
-               const response = await fetch(`/api/carts/${cartId}/product/${prodcut.id}`, {
+               const response = await fetch(`/api/carts/${cartId}/product/${productId}`, {
                 method: 'DELETE'
                });
                const result = await response.json();
